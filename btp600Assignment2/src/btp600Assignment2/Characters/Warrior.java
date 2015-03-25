@@ -1,7 +1,7 @@
 package btp600Assignment2.Characters;
 
 import btp600Assignment2.BattleController;
-import btp600Assignment2.Enemy;
+import btp600Assignment2.Enemies.*;
 import btp600Assignment2.NavigateController;
 import btp600Assignment2.Position;
 import btp600Assignment2.Weapons.Weapon;

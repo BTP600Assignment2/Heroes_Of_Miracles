@@ -1,10 +1,12 @@
 package btp600Assignment2.Weapons;
 
-public class Fire extends SwordDecorator {
+public class Fire extends SwordDecorator implements PowerUpStrategy {
+	
+	public Fire() {}
 
 	public Fire(Weapon decoratedWeapon) {
 		super(decoratedWeapon);
-		System.out.println("Equipping fire to weapon...");
+		System.out.println("Equipping fire to weapon, that has area effect damage...");
 	}
 	
 	public String getWeaponPowerUp() {		
@@ -23,5 +25,10 @@ public class Fire extends SwordDecorator {
 	@Override
 	public void displayAttackPower() {
 		System.out.println(decoratedWeapon.getAttackPower() + 3);		
+	}
+
+	@Override
+	public String displayPowerUp() {
+		return "Fire";
 	}
 }

@@ -3,6 +3,8 @@ package btp600Assignment2.Weapons;
 public abstract class SwordDecorator implements Weapon {
 	protected Weapon decoratedWeapon;
 	
+	public SwordDecorator() {}
+	
 	public SwordDecorator(Weapon decoratedWeapon) {
 		this.decoratedWeapon = decoratedWeapon;
 	}

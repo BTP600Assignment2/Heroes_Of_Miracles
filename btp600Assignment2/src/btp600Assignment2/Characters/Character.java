@@ -1,6 +1,6 @@
 package btp600Assignment2.Characters;
 
-public abstract class Character {
+public abstract class Character { //Template
 	
 	final void regularCommand() {
 		
