@@ -19,7 +19,6 @@ public class Drake extends Enemy implements ObserverMinion {
 		dragonStats.registerObserverMinion(this);
 	}
 	
-	@Override
 	public void update(int hp, int minionAP) {
 		currentHealthPoints = hp;
 		enemyAttackPower = minionAP;

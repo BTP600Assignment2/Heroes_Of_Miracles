@@ -17,17 +17,14 @@ public class Ice extends SwordDecorator implements PowerUpStrategy {
 		return decoratedWeapon.getAttackPower() + 1;
 	}
 
-	@Override
 	public void displayWeapon() {
 		System.out.println(decoratedWeapon.getWeaponPowerUp() + "(Ice)");		
 	}
 
-	@Override
 	public void displayAttackPower() {
 		System.out.println(decoratedWeapon.getAttackPower() + 1);		
 	}
 
-	@Override
 	public String displayPowerUp() {
 		return "Ice";
 	}

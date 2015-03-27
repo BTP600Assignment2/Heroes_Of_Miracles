@@ -17,17 +17,14 @@ public class Fire extends SwordDecorator implements PowerUpStrategy {
 		return decoratedWeapon.getAttackPower() + 3;
 	}
 
-	@Override
 	public void displayWeapon() {
 		System.out.println(decoratedWeapon.getWeaponPowerUp() + "(Fire)");		
 	}
 
-	@Override
 	public void displayAttackPower() {
 		System.out.println(decoratedWeapon.getAttackPower() + 3);		
 	}
 
-	@Override
 	public String displayPowerUp() {
 		return "Fire";
 	}

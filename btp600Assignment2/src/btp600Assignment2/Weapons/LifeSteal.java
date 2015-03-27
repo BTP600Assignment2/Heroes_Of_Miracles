@@ -17,17 +17,14 @@ public class LifeSteal extends SwordDecorator implements PowerUpStrategy {
 		return decoratedWeapon.getAttackPower() + 2;
 	}
 
-	@Override
 	public void displayWeapon() {
 		System.out.println(decoratedWeapon.getWeaponPowerUp() + "(LifeSteal)");	
 	}
 
-	@Override
 	public void displayAttackPower() {
 		System.out.println(decoratedWeapon.getAttackPower() + 2);
 	}
 
-	@Override
 	public String displayPowerUp() {
 		return "Lifesteal";
 	}
