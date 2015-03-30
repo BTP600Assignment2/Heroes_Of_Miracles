@@ -1,5 +1,7 @@
 package btp600Assignment2.Characters;
 
+import java.util.ArrayList;
+
 import btp600Assignment2.BattleController;
 import btp600Assignment2.Enemies.*;
 import btp600Assignment2.NavigateController;
@@ -8,61 +10,57 @@ import btp600Assignment2.Weapons.Weapon;
 
 public class Warrior extends Character {
 	//needs return methods to display what it is
-	private Position currentPosition; 
-	private Weapon equippedWeapon;
+	private String type = "Warrior";
+	private Weapon currentWeapon;
+	private ArrayList<Weapon> collectedWeapons;
 	private int currentHealthPoints = 100;
 	private String name = "Damian";
-	private Enemy currentEnemy;
+	private boolean isAlive;
 	
 	//receives the move commands, send for calc. and return the results
-	NavigateController navigateController; 
-	BattleController battleController;
-
-	@Override
-	public void actionMenu() {
-		// TODO Auto-generated method stub
-		
+	private NavigateController navigateController; 
+	private BattleController battleController;
+	
+	private Position currentPosition; //Maybe we need to use it, not necessary
+	
+	public Warrior() { //Each warrior has their own collection of weapon power ups 
+		collectedWeapons = new ArrayList();
 	}
 
-	@Override
-	public void position() {
-		// TODO Auto-generated method stub
-		
+	public String position() { //Returns the current position of the hero
+		return "";
 	}
 
-	@Override
-	public void weapon() {
-		// TODO Auto-generated method stub
-		
+	public String weaponEquippedNames() { //Returns the character's power ups currently equipped
+		return currentWeapon.displayWeapon();
+	}
+	
+	public int weaponEquippedAttackPower() { //Returns the character's total power up attack power added together
+		return currentWeapon.displayAttackPower();
+	}
+	
+	public void addWeaponPowerUp(Weapon powerUp) { //character adds the power up here
+		currentWeapon = powerUp;
+		collectedWeapons.add(powerUp); //Add a weapon power up to the collection that the hero has collected
+	}
+	
+	public ArrayList<Weapon> collectedPowerUps() { //Returns an arraylist of collected power ups by the character
+		return collectedWeapons;
 	}
 
-	@Override
-	public void healthPoints() {
-		System.out.println(currentHealthPoints +  "/100");		
+	public int healthPoints() { //Returns the current health points of the character
+		return currentHealthPoints;	
 	}
 
-	@Override
-	public void characterName() {
-		System.out.println(name);
-		
+	public String characterName() { //Returns the name of the chracter
+		return name;
 	}
 
-	@Override
-	public void navigationController() {
-		// TODO Auto-generated method stub
-		
+	public NavigateController navigationController() {
+		return navigateController;
 	}
 
-	@Override
-	public void battleController() {
-		// TODO Auto-generated method stub
-		
+	public BattleController battleController() {
+		return battleController;
 	}
-
-	@Override
-	public void enemyOpponent() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

@@ -7,60 +7,55 @@ import btp600Assignment2.Weapons.PowerUpContext;
 
 public class Dragon extends Enemy implements Subject {
 	//needs return methods to display what it is
-	private EnemyPosition currentPosition;
 	private int currentHealthPoints = 200;
 	private String name = "Rimescale of the Flame";
 	private int enemyAttackPower = 9;
 	
 	private ArrayList<ObserverMinion> observerMinions;
-	private int drakeHealthPoints = 0;
+	private int drakeHealthPoints = 0; //set something by default
+	
+	public boolean enemyBoss() { return true; } //Check if this is true, if it is, after this battle, show the ending if user wins
+	
+	private EnemyPosition currentPosition;
 
-	public Dragon() {
+	public Dragon() { //A collection of observers
 		observerMinions = new ArrayList<ObserverMinion>();
 	}
 	
-	public boolean enemyBoss() { return true; } //Check if this is true, if it is, after this battle, show the ending if user wins
-
-	@Override
-	public void position() {
-		// TODO Auto-generated method stub
-		
+	public String position() { //Returns the position if needed
+		return "";
 	}
 
-	@Override
-	public void healthPoints() {		
-		System.out.println(currentHealthPoints + "/200");
+	public int healthPoints() {	//Returns the health points of the dragon
+		return currentHealthPoints;
 	}
 
-	@Override
-	public void enemyAttackPower() {
-		System.out.println(enemyAttackPower);		
+	public int enemyAttackPower() { //Returns the attack power of the dragon
+		return enemyAttackPower;		
 	}
 
-	@Override
-	public void enemyName() {
-		System.out.println(name);		
+	public String enemyName() { //Returns the name of the dragon
+		return name;		
 	}
 
-	@Override
-	public void powerUpDrop() {} //Last boss, no drops
+	public String powerUpDrop() { return ""; } //Last boss, no drops, should not drop anything.
 	
 	
 	/* ********************* Observer methods here *********************************** */
-	public void registerObserverMinion(ObserverMinion o) {
+	public void registerObserverMinion(ObserverMinion o) { //Method to add observers for the dragon
 		observerMinions.add(o);
 	}
 
-	public void removeObserverMinion(ObserverMinion o) {
+	public void removeObserverMinion(ObserverMinion o) { //Method to remove observers for the dragon, if necessary
 		int i = observerMinions.indexOf(o);
 		if(i >= 0)
 			observerMinions.remove(i);
 	}
 
-	public void notifyObserverMinions() {
+	public void notifyObserverMinions() { //Method to notify observers of changes from the dragon, when needed
 		for(int i = 0; i < observerMinions.size(); i++) {
 			ObserverMinion observerMinion = (ObserverMinion) observerMinions.get(i);
-			observerMinion.update(drakeHealthPoints, 3); //need the position too
+			observerMinion.update(drakeHealthPoints, 3); //maybe need the position too?
 		}
 	}
 	

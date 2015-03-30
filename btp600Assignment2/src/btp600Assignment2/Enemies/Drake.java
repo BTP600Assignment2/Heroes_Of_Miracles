@@ -5,13 +5,14 @@ import btp600Assignment2.Weapons.PowerUpContext;
 
 public class Drake extends Enemy implements ObserverMinion {
 	//needs return methods to display what it is
-	private EnemyPosition currentPosition;
 	private int currentHealthPoints;
 	private int maxHealthPoints;
 	private String name = "Drakes of the Flame";
 	private int enemyAttackPower;
 	
-	private Subject dragonStats;
+	private Subject dragonStats; //Manages a bit of the dragon statistics/data
+	
+	private EnemyPosition currentPosition; //Don't really need it, here just in case
 
 	//Observer methods
 	public Drake(Subject dragonStats) { //Register the drake as an observer
@@ -19,7 +20,7 @@ public class Drake extends Enemy implements ObserverMinion {
 		dragonStats.registerObserverMinion(this);
 	}
 	
-	public void update(int hp, int minionAP) {
+	public void update(int hp, int minionAP) { //Updates all the drake observers
 		currentHealthPoints = hp;
 		enemyAttackPower = minionAP;
 		maxHealthPoints = currentHealthPoints;
@@ -27,29 +28,23 @@ public class Drake extends Enemy implements ObserverMinion {
 	}
 
 	//Template methods
-	@Override
-	public void position() {
-		// TODO Auto-generated method stub
-		
+	public String position() { //Returns the current position of the drakes, if needed
+		return "";	
 	}
 
-	@Override
-	public void healthPoints() {
-		System.out.println(currentHealthPoints + "/" + maxHealthPoints);
-		
+	public int healthPoints() { //Returns the health points of the drakes
+		return currentHealthPoints;
 	}
 
-	@Override
-	public void enemyAttackPower() {
-		System.out.println(enemyAttackPower);			
+	public int enemyAttackPower() { //Returns the attack power of the drakes
+		return enemyAttackPower;			
 	}
 
-	@Override
-	public void enemyName() {
-		System.out.println(name);		
+	public String enemyName() { //Returns the name of the drakes
+		return name;		
 	}
 
-	public void powerUpDrop() {} //Last battle, no drops
+	public String powerUpDrop() { return ""; } //Last battle, a minion spawned, no drops
 	public void registerObserverMinion(ObserverMinion o) {}
 	public void removeObserverMinion(ObserverMinion o) {}
 	public void notifyObserverMinions() {}

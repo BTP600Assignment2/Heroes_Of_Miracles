@@ -1,6 +1,6 @@
 package btp600Assignment2.Weapons;
 
-public abstract class SwordDecorator implements Weapon {
+public abstract class SwordDecorator implements Weapon { //Everything weapon power up will start as a sword decorator
 	protected Weapon decoratedWeapon;
 	
 	public SwordDecorator() {}
@@ -9,11 +9,11 @@ public abstract class SwordDecorator implements Weapon {
 		this.decoratedWeapon = decoratedWeapon;
 	}
 	
-	public String getWeaponPowerUp() {
-		return decoratedWeapon.getWeaponPowerUp();
+	public String displayWeapon() {
+		return decoratedWeapon.displayWeapon();
 	}
 	
-	public int getAttackPower() {
-		return decoratedWeapon.getAttackPower();
+	public int displayAttackPower() {
+		return decoratedWeapon.displayAttackPower();
 	}
 }

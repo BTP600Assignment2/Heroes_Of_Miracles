@@ -1,22 +1,13 @@
 package btp600Assignment2.Weapons;
 
+public class Sword implements Weapon { //The basic base default sword equipped for Damian, warrior
 
-public class Sword implements Weapon { //The basic default sword equipped for Damian, meele hero
-
-	public String getWeaponPowerUp() {
-		return "Kingslayer";
+	public String displayWeapon() {
+		return "Kingslayer";		
 	}
 
-	public int getAttackPower() {
-		return 3;
-	}
-
-	public void displayWeapon() {
-		System.out.println("Kingslayer");		
-	}
-
-	public void displayAttackPower() {
-		System.out.println(3);	
+	public int displayAttackPower() {
+		return 3;	
 	}
 
 }

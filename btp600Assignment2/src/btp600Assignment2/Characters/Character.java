@@ -1,26 +1,28 @@
 package btp600Assignment2.Characters;
 
+import java.util.ArrayList;
+
+import btp600Assignment2.BattleController;
+import btp600Assignment2.NavigateController;
+import btp600Assignment2.Weapons.Weapon;
+
 public abstract class Character { //Template
 	
-	final void regularCommand() {
-		
-	}
 	boolean characterMoves() { return false; }
 	boolean characterOpensItemMenu() { return false; }
 	
-	final void battleCommand() {
-		
-	}
 	boolean characterAttacks() { return false; }
 	boolean characterRetreats() { return false; }
 	boolean characterHeals() { return false; }
 	
-	public abstract void actionMenu();
-	public abstract void position();
-	public abstract void weapon();
-	public abstract void healthPoints();
-	public abstract void characterName();
-	public abstract void navigationController();
-	public abstract void battleController();
-	public abstract void enemyOpponent();
+	public abstract String position();
+	public abstract String weaponEquippedNames();
+	public abstract int weaponEquippedAttackPower();
+	public abstract ArrayList<Weapon> collectedPowerUps();
+	public abstract int healthPoints();
+	public abstract String characterName();
+	public abstract void addWeaponPowerUp(Weapon powerUps);
+	
+	public abstract NavigateController navigationController();
+	public abstract BattleController battleController();
 }

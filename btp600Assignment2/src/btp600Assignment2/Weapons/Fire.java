@@ -4,28 +4,20 @@ public class Fire extends SwordDecorator implements PowerUpStrategy {
 	
 	public Fire() {}
 
-	public Fire(Weapon decoratedWeapon) {
+	public Fire(Weapon decoratedWeapon) { //Derived Constructor used to add on the decorator over the weapon, one after another.
 		super(decoratedWeapon);
-		System.out.println("Equipping fire to weapon, that has area effect damage...");
-	}
-	
-	public String getWeaponPowerUp() {		
-		return decoratedWeapon.getWeaponPowerUp() + "(Fire)";
-	}
-	
-	public int getAttackPower() {
-		return decoratedWeapon.getAttackPower() + 3;
+		System.out.println("Equipping the fire power up to your weapon...");
 	}
 
-	public void displayWeapon() {
-		System.out.println(decoratedWeapon.getWeaponPowerUp() + "(Fire)");		
+	public String displayWeapon() { //Returns the current power up decorated over the weapon.
+		return decoratedWeapon.displayWeapon() + "(Fire)";		
 	}
 
-	public void displayAttackPower() {
-		System.out.println(decoratedWeapon.getAttackPower() + 3);		
+	public int displayAttackPower() { //Returns the current power up attack power added to the weapon attack power.
+		return decoratedWeapon.displayAttackPower() + 3;		
 	}
 
-	public String displayPowerUp() {
+	public String displayPowerUp() { //Returns the type of power up directly when the monster is defeated.
 		return "Fire";
 	}
 }
