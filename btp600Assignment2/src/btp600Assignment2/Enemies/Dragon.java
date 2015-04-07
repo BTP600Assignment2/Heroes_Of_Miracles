@@ -2,44 +2,42 @@ package btp600Assignment2.Enemies;
 
 import java.util.ArrayList;
 
+import btp600Assignment2.BattleController;
+import btp600Assignment2.Character;
 import btp600Assignment2.EnemyPosition;
+import btp600Assignment2.NavigateController;
+import btp600Assignment2.Position;
 import btp600Assignment2.Weapons.PowerUpContext;
+import btp600Assignment2.Weapons.Weapon;
 
-public class Dragon extends Enemy implements Subject {
+public class Dragon extends Character implements Subject {
 	//needs return methods to display what it is
-	private int currentHealthPoints = 200;
+	private long currentHealthPoints = 200;
 	private String name = "Rimescale of the Flame";
-	private int enemyAttackPower = 9;
+	private long enemyAttackPower = 9;
+	private boolean alive = true;
+	private boolean boss = true;
 	
 	private ArrayList<ObserverMinion> observerMinions;
-	private int drakeHealthPoints = 0; //set something by default
-	
-	public boolean enemyBoss() { return true; } //Check if this is true, if it is, after this battle, show the ending if user wins
+	private long drakeHealthPoints = 0; //set something by default
 	
 	private EnemyPosition currentPosition;
 
 	public Dragon() { //A collection of observers
 		observerMinions = new ArrayList<ObserverMinion>();
 	}
-	
-	public String position() { //Returns the position if needed
-		return "";
-	}
 
-	public int healthPoints() {	//Returns the health points of the dragon
+	public long healthPoints() {	//Returns the health points of the dragon
 		return currentHealthPoints;
 	}
 
-	public int enemyAttackPower() { //Returns the attack power of the dragon
+	public long getAttackPower() { //Returns the attack power of the dragon
 		return enemyAttackPower;		
 	}
 
-	public String enemyName() { //Returns the name of the dragon
+	public String getName() { //Returns the name of the dragon
 		return name;		
 	}
-
-	public String powerUpDrop() { return ""; } //Last boss, no drops, should not drop anything.
-	
 	
 	/* ********************* Observer methods here *********************************** */
 	public void registerObserverMinion(ObserverMinion o) { //Method to add observers for the dragon
@@ -66,4 +64,50 @@ public class Dragon extends Enemy implements Subject {
 		notifyObserverMinions();
 	}
 
+	public boolean isEnemyOf(Character ch) {
+		String characterType = (ch.getClass()).getSimpleName();
+		if(characterType.equals("Warrior"))
+			return true;
+		else
+			return false;
+	}
+
+	public boolean isAlive() {
+		// TODO Auto-generated method stub
+		return alive;
+	}
+
+	public void setIsAlive(boolean b) {
+		if(b)
+			alive = true;
+		else
+			alive = false;	
+	}
+
+	public long getHealthIncreasement() {
+		return 0;
+	}
+
+	public void setName(String n) {
+		name = n;
+	}
+
+	public String getType() {
+		return characters.Dragon.toString();
+	}
+
+	public Boolean isBoss() {
+		return boss;
+	}
+
+	public void setIsBoss(boolean b) {
+		boss = b;
+	}
+
+	public long getTeamNumber() { return 0; }	
+	public void setTeamNumber(long num) {}
+	public ArrayList<Weapon> collectedPowerUps() { return null; }
+	public String weaponEquippedNames() { return null; }
+	public void collectWeapon(Weapon w) {}
+	public String powerUpDrop() { return null; }
 }

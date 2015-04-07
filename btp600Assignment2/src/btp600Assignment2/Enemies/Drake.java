@@ -1,14 +1,23 @@
 package btp600Assignment2.Enemies;
 
-import btp600Assignment2.EnemyPosition;
-import btp600Assignment2.Weapons.PowerUpContext;
+import java.util.ArrayList;
 
-public class Drake extends Enemy implements ObserverMinion {
+import btp600Assignment2.BattleController;
+import btp600Assignment2.Character;
+import btp600Assignment2.EnemyPosition;
+import btp600Assignment2.NavigateController;
+import btp600Assignment2.Position;
+import btp600Assignment2.Weapons.PowerUpContext;
+import btp600Assignment2.Weapons.Weapon;
+
+public class Drake extends Character implements ObserverMinion {
 	//needs return methods to display what it is
-	private int currentHealthPoints;
-	private int maxHealthPoints;
+	private long currentHealthPoints;
+	private long maxHealthPoints;
 	private String name = "Drakes of the Flame";
-	private int enemyAttackPower;
+	private long enemyAttackPower;
+	private boolean alive = true;
+	private boolean boss = false;
 	
 	private Subject dragonStats; //Manages a bit of the dragon statistics/data
 	
@@ -20,7 +29,7 @@ public class Drake extends Enemy implements ObserverMinion {
 		dragonStats.registerObserverMinion(this);
 	}
 	
-	public void update(int hp, int minionAP) { //Updates all the drake observers
+	public void update(long hp, long minionAP) { //Updates all the drake observers
 		currentHealthPoints = hp;
 		enemyAttackPower = minionAP;
 		maxHealthPoints = currentHealthPoints;
@@ -28,19 +37,16 @@ public class Drake extends Enemy implements ObserverMinion {
 	}
 
 	//Template methods
-	public String position() { //Returns the current position of the drakes, if needed
-		return "";	
-	}
 
-	public int healthPoints() { //Returns the health points of the drakes
+	public long healthPoints() { //Returns the health points of the drakes
 		return currentHealthPoints;
 	}
 
-	public int enemyAttackPower() { //Returns the attack power of the drakes
+	public long getAttackPower() { //Returns the attack power of the drakes
 		return enemyAttackPower;			
 	}
 
-	public String enemyName() { //Returns the name of the drakes
+	public String getName() { //Returns the name of the drakes
 		return name;		
 	}
 
@@ -49,4 +55,51 @@ public class Drake extends Enemy implements ObserverMinion {
 	public void removeObserverMinion(ObserverMinion o) {}
 	public void notifyObserverMinions() {}
 
+	public boolean isEnemyOf(Character ch) {
+		String characterType = (ch.getClass()).getSimpleName();
+		if(characterType.equals("Warrior"))
+			return true;
+		else
+			return false;
+	}
+
+	public boolean isAlive() {
+		return alive;
+	}
+
+	public void setIsAlive(boolean b) {
+		if(b)
+			alive = true;
+		else
+			alive = false;
+	}
+
+	public long getHealthIncreasement() {
+		return 0;
+	}
+
+	public void setName(String n) {
+		name = n;
+	}
+
+	public String getType() {
+		return characters.Drakes.toString();
+	}
+
+	public long getTeamNumber() {
+		return 0;
+	}
+
+	public Boolean isBoss() {
+		return boss;
+	}
+
+	public void setIsBoss(boolean b) {
+		boss = b;
+	}
+
+	public void setTeamNumber(long num) {}
+	public void collectWeapon(Weapon w) {}
+	public ArrayList<Weapon> collectedPowerUps() { return null; }
+	public String weaponEquippedNames() { return null; }
 }

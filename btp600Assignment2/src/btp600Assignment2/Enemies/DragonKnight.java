@@ -1,18 +1,24 @@
 package btp600Assignment2.Enemies;
 
+import java.util.ArrayList;
 import java.util.Random;
 
+import btp600Assignment2.BattleController;
+import btp600Assignment2.Character;
 import btp600Assignment2.EnemyPosition;
+import btp600Assignment2.NavigateController;
+import btp600Assignment2.Position;
 import btp600Assignment2.Weapons.*;
 
-public class DragonKnight extends Enemy {
+public class DragonKnight extends Character {
 	//needs return methods to display what it is
-	private int currentHealthPoints = 100;
+	private long currentHealthPoints = 100;
 	private String name = "Dragon Knight";
-	private int enemyAttackPower = 4;
-	private PowerUpContext weaponPowerUpDrop;
+	private long enemyAttackPower = 4;
+	private boolean alive = true;
+	private boolean boss = false;
 	
-	public boolean enemyBoss() { return false; }
+	private PowerUpContext weaponPowerUpDrop;
 	
 	private EnemyPosition currentPosition;
 	
@@ -40,26 +46,65 @@ public class DragonKnight extends Enemy {
 		return weaponPowerUpDrop.displayPowerUp();
 	}
 
-	public String position() { //Returns the location of the dragon knight, if needed
-		return "";	
-	}
-
-	public int healthPoints() { //Returns the health points of dragon knight
+	public long healthPoints() { //Returns the health points of dragon knight
 		return currentHealthPoints;
 	}
 
-	@Override
-	public String enemyName() { //Returns the name of dragon knight
+	public String getName() { //Returns the name of dragon knight
 		return name;
 	}
 
-	@Override
-	public int enemyAttackPower() { //Returns the attack power of dragon knight
+	public long getAttackPower() { //Returns the attack power of dragon knight
 		return enemyAttackPower;	
 	}
 
+	//Observer methods, don't really need it unless the enemy is the boss
 	public void registerObserverMinion(ObserverMinion o) {}
 	public void removeObserverMinion(ObserverMinion o) {}
 	public void notifyObserverMinions() {}
 
+	public boolean isEnemyOf(Character ch) {
+		String characterType = (ch.getClass()).getSimpleName();
+		if(characterType.equals("Warrior"))
+			return true;
+		else
+			return false;
+	}
+
+	public boolean isAlive() {
+		return alive;
+	}
+
+	public void setIsAlive(boolean b) {
+		if(b)
+			alive = true;
+		else
+			alive = false;
+	}
+
+	public long getHealthIncreasement() {
+		return 0;
+	}
+
+	public void setName(String n) {
+		name = n;
+	}
+
+	public String getType() {
+		return characters.DragonKnight.toString();
+	}
+
+	public Boolean isBoss() {
+		return boss;
+	}
+
+	public void setIsBoss(boolean b) {
+		boss = b;
+	}
+
+	public long getTeamNumber() { return 0; }
+	public void collectWeapon(Weapon w) {}
+	public void setTeamNumber(long num) {}
+	public ArrayList<Weapon> collectedPowerUps() { return null; }
+	public String weaponEquippedNames() { return null; }
 }
